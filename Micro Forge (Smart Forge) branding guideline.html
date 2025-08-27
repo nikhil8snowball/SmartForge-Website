@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroForge Polymers - Branding Guidelines</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Montserrat for headings, Poppins for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Tailwind Colors */
+        :root {
+            --color-primary-accent: #ff6347; /* Tomato Red */
+            --color-primary-dark: #0A1C3F;   /* New, more blueish dark Navy Blue */
+            --color-secondary-neutral: #ecf0f1; /* Cloud */
+            --color-secondary-accent: #3498db; /* Dodger Blue */
+            --color-text-detail: #7f8c8d;    /* Asbestos */
+            --color-gray-800: #2d3748; /* For footer */
+        }
+
+        .bg-primary-accent { background-color: var(--color-primary-accent); }
+        .text-primary-accent { color: var(--color-primary-accent); }
+        .bg-primary-dark { background-color: var(--color-primary-dark); }
+        .text-primary-dark { color: var(--color-primary-dark); }
+        .bg-secondary-neutral { background-color: var(--color-secondary-neutral); }
+        .text-secondary-neutral { color: var(--color-secondary-neutral); }
+        .bg-secondary-accent { background-color: var(--color-secondary-accent); }
+        .text-secondary-accent { color: var(--color-secondary-accent); }
+        .text-text-detail { color: var(--color-text-detail); }
+        .bg-gray-800 { background-color: var(--color-gray-800); }
+
+
+        /* Custom Font Families */
+        .font-montserrat { font-family: 'Montserrat', sans-serif; }
+        .font-poppins { font-family: 'Poppins', sans-serif; }
+
+        /* General body styling */
+        body {
+            @apply bg-secondary-neutral font-poppins text-primary-dark;
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+        }
+
+        /* Section styling */
+        .section {
+            @apply py-48 px-4 md:px-8 lg:px-16; /* Increased padding for more breathing room */
+            opacity: 0; /* Hidden by default for fade-in animation */
+            transform: translateY(20px); /* Slightly moved down for fade-in animation */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .section.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Card styling */
+        .card {
+            @apply bg-white p-8 rounded-xl shadow-xl border border-gray-100; /* More prominent shadow, subtle border */
+        }
+
+        /* Button styling */
+        .btn-primary {
+            @apply bg-primary-accent text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-opacity-90 transition duration-300 ease-in-out transform hover:scale-105; /* Rounded, larger padding, subtle hover effect */
+        }
+
+        /* Color swatch styling */
+        .color-swatch {
+            @apply w-full h-24 rounded-lg flex items-center justify-center text-white text-sm font-bold border border-gray-200;
+        }
+
+        /* Subtle animation for hero text */
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+            animation: fade-in-up 1s ease-out forwards;
+        }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-400 { animation-delay: 0.4s; }
+
+        /* Canvas styling for pie chart */
+        #colorPieChart {
+            max-width: 300px;
+            max-height: 300px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* Specific padding/margin for titles */
+        h1 {
+            @apply mb-12; /* Increased space below H1 */
+        }
+        .section h2 {
+            @apply mb-20 mt-20; /* Increased margin top and bottom for H2s in sections */
+        }
+        .card h3 {
+            @apply mb-8; /* Increased margin bottom for H3s in cards */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Hero Section / Title Slide -->
+    <header class="section bg-primary-dark text-white text-center min-h-screen flex flex-col justify-center items-center fade-in">
+        <h1 class="font-montserrat text-5xl md:text-7xl lg:text-8xl font-bold mb-4 animate-fade-in-up">
+            MicroForge Polymers
+        </h1>
+        <p class="font-poppins text-xl md:text-2xl lg:text-3xl max-w-3xl leading-relaxed animate-fade-in-up delay-200">
+            Revolutionizing Precision Micro-injection Molding & Bonding
+        </p>
+        <div class="mt-12 animate-fade-in-up delay-400">
+            <a href="#brand-identity" class="btn-primary">Explore Guidelines</a>
+        </div>
+    </header>
+
+    <!-- Brand Identity Section -->
+    <section id="brand-identity" class="section bg-secondary-neutral">
+        <div class="max-w-6xl mx-auto"><br>
+            <h2 class="font-montserrat text-4xl md:text-5xl font-bold text-center mb-12 text-primary-dark">
+                Our Brand Identity
+            </h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="card">
+                    <h3 class="font-montserrat text-2xl font-semibold mb-4 text-primary-accent">
+                        The Collaborative Technical Pioneer
+                    </h3>
+                    <p class="font-poppins text-lg text-text-detail mb-4">
+                        We are innovation partners. We solve the "impossible."
+                    </p>
+                    <p class="font-poppins text-lg text-text-detail">
+                        Our voice: breakthrough technology + proven delivery.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3 class="font-montserrat text-2xl font-semibold mb-4 text-primary-accent">
+                        Key Messaging
+                    </h3>
+                    <ul class="list-disc list-inside font-poppins text-lg text-text-detail space-y-2">
+                        <li><strong>Breakthrough Language:</strong> "Unprecedented," "previously impossible."</li>
+                        <li><strong>Reliability:</strong> "Breakthrough precision delivered consistently."</li>
+                        <li><strong>Team Authority:</strong> "Deep manufacturing experience."</li>
+                        <li><strong>Risk Mitigation:</strong> Staged validation, performance guarantees.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card mt-16">
+                <h3 class="font-montserrat text-2xl font-semibold mb-4 text-primary-accent text-center">
+                    Tone Examples
+                </h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div>
+                        <p class="font-poppins text-lg italic text-text-detail">
+                            "For decades, researchers accepted that innovative designs couldn't survive manufacturing. We proved them wrong."
+                        </p>
+                        <p class="text-sm text-gray-500 mt-2"><em>(Hook)</em></p>
+                    </div>
+                    <div>
+                        <p class="font-poppins text-lg italic text-text-detail">
+                            "Traditional 1,500 bar molding creates unpredictable results. Our 150 bar vacuum-based approach delivers breakthrough precision consistently."
+                        </p>
+                        <p class="text-sm text-gray-500 mt-2"><em>(Technical)</em></p>
+                    </div>
+                    <div>
+                        <p class="font-poppins text-lg italic text-text-detail">
+                            "Through validations across UK, European, and Asian markets, we've proven breakthrough manufacturing scales reliably."
+                        </p>
+                        <p class="text-sm text-gray-500 mt-2"><em>(Partnership)</em></p>
+                    </div>
+                </div>
+            </div><br>
+        </div>
+    </section>
+
+    <!-- Color Palette Section -->
+    <section id="color-palette" class="section bg-primary-dark text-white">
+        <div class="max-w-6xl mx-auto"><br>
+            <h2 class="font-montserrat text-4xl md:text-5xl font-bold text-center mb-12">
+                Our Color Palette
+            </h2>
+            <p class="font-poppins text-lg text-center mb-12 max-w-2xl mx-auto">
+                A blend of innovation (orange) and reliability (blue/grey) for a modern, technical feel.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Color Swatches -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <!-- Primary Accent -->
+                    <div class="card bg-white p-4 text-primary-dark flex flex-col items-center">
+                        <div class="color-swatch bg-primary-accent">
+                            <span class="text-white text-xl font-bold">#ff6347</span>
+                        </div>
+                        <p class="font-montserrat font-semibold mt-4 text-lg">Primary Accent</p>
+                        <p class="font-poppins text-sm text-gray-600">Tomato Red</p>
+                        <p class="font-poppins text-xs text-gray-500 mt-2">Usage: 10%</p>
+                    </div>
+                    <!-- Primary Dark -->
+                    <div class="card bg-white p-4 text-primary-dark flex flex-col items-center">
+                        <div class="color-swatch bg-primary-dark">
+                            <span class="text-white text-xl font-bold">#0A1C3F</span>
+                        </div>
+                        <p class="font-montserrat font-semibold mt-4 text-lg">Primary Dark</p>
+                        <p class="font-poppins text-sm text-gray-600">Navy Blue</p>
+                        <p class="font-poppins text-xs text-gray-500 mt-2">Usage: 45%</p>
+                    </div>
+                    <!-- Secondary Neutral -->
+                    <div class="card bg-white p-4 text-primary-dark flex flex-col items-center">
+                        <div class="color-swatch bg-secondary-neutral border border-gray-200">
+                            <span class="text-primary-dark text-xl font-bold">#ecf0f1</span>
+                        </div>
+                        <p class="font-montserrat font-semibold mt-4 text-lg">Secondary Neutral</p>
+                        <p class="font-poppins text-sm text-gray-600">Cloud</p>
+                        <p class="font-poppins text-xs text-gray-500 mt-2">Usage: 35%</p>
+                    </div>
+                    <!-- Secondary Accent -->
+                    <div class="card bg-white p-4 text-primary-dark flex flex-col items-center">
+                        <div class="color-swatch bg-secondary-accent">
+                            <span class="text-white text-xl font-bold">#3498db</span>
+                        </div>
+                        <p class="font-montserrat font-semibold mt-4 text-lg">Secondary Accent</p>
+                        <p class="font-poppins text-sm text-gray-600">Dodger Blue</p>
+                        <p class="font-poppins text-xs text-gray-500 mt-2">Usage: 5%</p>
+                    </div>
+                    <!-- Text & Minor Details -->
+                    <div class="card bg-white p-4 text-primary-dark flex flex-col items-center">
+                        <div class="color-swatch bg-text-detail">
+                            <span class="text-white text-xl font-bold">#7f8c8d</span>
+                        </div>
+                        <p class="font-montserrat font-semibold mt-4 text-lg">Text & Details</p>
+                        <p class="font-poppins text-sm text-gray-600">Asbestos</p>
+                        <p class="font-poppins text-xs text-gray-500 mt-2">Usage: 5%</p>
+                    </div>
+                </div>
+                <!-- Pie Chart -->
+                <div class="card bg-white p-6 flex flex-col items-center justify-center">
+                    <h3 class="font-montserrat text-2xl font-semibold mb-6 text-primary-dark text-center">
+                        Color Usage Distribution
+                    </h3>
+                    <canvas id="colorPieChart" width="300" height="300"></canvas>
+                </div>
+            </div>
+        </div><br>
+    </section>
+
+    <!-- Typography Section -->
+    <section id="typography" class="section bg-secondary-neutral">
+        <div class="max-w-6xl mx-auto"><br>
+            <h2 class="font-montserrat text-4xl md:text-5xl font-bold text-center mb-12 text-primary-dark">
+                Our Typography
+            </h2>
+            <p class="font-poppins text-lg text-center mb-12 max-w-2xl mx-auto text-text-detail">
+                Clean, modern, and highly readable fonts reflecting our technical and professional brand.
+            </p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="card">
+                    <h3 class="font-montserrat text-primary-accent text-2xl font-semibold mb-4">
+                        Headings: Montserrat
+                    </h3>
+                    <p class="font-montserrat text-5xl font-bold mb-4 text-primary-dark">
+                        The Quick Brown Fox
+                    </p>
+                    <p class="font-montserrat text-2xl font-semibold text-text-detail">
+                        Used for H1, H2, H3. Strong, geometric, confident.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3 class="font-montserrat text-primary-accent text-2xl font-semibold mb-4">
+                        Body Text: Poppins
+                    </h3>
+                    <p class="font-poppins text-3xl font-normal mb-4 text-primary-dark">
+                        The quick brown fox jumps over the lazy dog.
+                    </p>
+                    <p class="font-poppins text-lg text-text-detail">
+                        Used for paragraphs, captions, UI elements. Legible, clean, easy to read.
+                    </p>
+                </div>
+            </div><br>
+        </div>
+    </section>
+
+    <!-- Layout & Design Principles Section -->
+    <section id="layout-design" class="section bg-primary-dark text-white">
+        <div class="max-w-6xl mx-auto"><br>
+            <h2 class="font-montserrat text-4xl md:text-5xl font-bold text-center mb-12">
+                Layout & Design Principles
+            </h2>
+            <p class="font-poppins text-lg text-center mb-12 max-w-2xl mx-auto">
+                Visually driven with a clean, grid-based layout. Inspired by industry leaders.
+            </p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="card bg-white p-6 text-primary-dark">
+                    <h3 class="font-montserrat text-primary-accent text-2xl font-semibold mb-4">
+                        Visual Storytelling
+                    </h3>
+                    <ul class="list-disc list-inside font-poppins text-lg text-text-detail space-y-2">
+                        <li>Bold, full-width hero section.</li>
+                        <li>Large, impactful metrics (20X, 10X, 7 Days).</li>
+                        <li>High-quality product photography.</li>
+                        <li>Abstract graphics for microfluidics.</li>
+                        <li>Close-ups of "impossible" products.</li>
+                    </ul>
+                </div>
+                <div class="card bg-white p-6 text-primary-dark">
+                    <h3 class="font-montserrat text-primary-accent text-2xl font-semibold mb-4">
+                        Structured Content
+                    </h3>
+                    <ul class="list-disc list-inside font-poppins text-lg text-text-detail space-y-2">
+                        <li>Dedicated "Our Breakthrough" section.</li>
+                        <li>Clear "Seamless Scale-Up" process flow.</li>
+                        <li>Trust indicators: partner logos, testimonials.</li>
+                        <li>Minimal, intuitive navigation.</li>
+                        <li>Clean, modern UI elements.</li>
+                    </ul>
+                </div>
+            </div><br>
+        </div>
+    </section>
+
+    <!-- Key Differentiators Section -->
+    <section id="differentiators" class="section bg-secondary-neutral">
+        <div class="max-w-6xl mx-auto"><br>
+            <h2 class="font-montserrat text-4xl md:text-5xl font-bold text-center mb-12 text-primary-dark">
+                Our Unrivaled Advantage
+            </h2>
+            <p class="font-poppins text-lg text-center mb-12 max-w-2xl mx-auto text-text-detail">
+                We reduce cost by 20X, time by 10X, and deliver prototypes within 7 working days.
+            </p>
+            <div class="grid sm:grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="card flex flex-col items-center p-6">
+                    <span class="text-primary-accent text-6xl font-bold font-montserrat mb-4">20X</span>
+                    <p class="font-poppins text-xl font-semibold text-primary-dark">Cost Reduction</p>
+                    <p class="font-poppins text-lg text-text-detail mt-2">Achieve significant savings.</p>
+                </div>
+                <div class="card flex flex-col items-center p-6">
+                    <span class="text-primary-accent text-6xl font-bold font-montserrat mb-4">10X</span>
+                    <p class="font-poppins text-xl font-semibold text-primary-dark">Faster Development</p>
+                    <p class="font-poppins text-lg text-text-detail mt-2">Accelerate your time to market.</p>
+                </div>
+                <div class="card flex flex-col items-center p-6">
+                    <span class="text-primary-accent text-6xl font-bold font-montserrat mb-4">7 Days</span>
+                    <p class="font-poppins text-xl font-semibold text-primary-dark">Prototype Delivery</p>
+                    <p class="font-poppins text-lg text-text-detail mt-2">From design to functional prototype.</p>
+                </div>
+            </div>
+        </div><br>
+    </section>
+
+  
+
+
+    <script>
+        // JavaScript for drawing the pie chart
+        function drawColorPieChart() {
+            const canvas = document.getElementById('colorPieChart');
+            if (!canvas) return; // Exit if canvas element is not found
+            const ctx = canvas.getContext('2d');
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = Math.min(centerX, centerY) * 0.8; // Make it slightly smaller than canvas
+
+            const colors = [
+                { name: 'Primary Dark', hex: '#0A1C3F', percentage: 45 }, // Updated hex
+                { name: 'Secondary Neutral', hex: '#ecf0f1', percentage: 35 },
+                { name: 'Primary Accent', hex: '#ff6347', percentage: 10 },
+                { name: 'Secondary Accent', hex: '#3498db', percentage: 5 },
+                { name: 'Text & Details', hex: '#7f8c8d', percentage: 5 }
+            ];
+
+            let startAngle = 0;
+            colors.forEach(segment => {
+                const sliceAngle = (2 * Math.PI * segment.percentage) / 100;
+                const endAngle = startAngle + sliceAngle;
+
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+                ctx.closePath();
+                ctx.fillStyle = segment.hex;
+                ctx.fill();
+
+                // Draw percentage text
+                const textAngle = startAngle + sliceAngle / 2;
+                const textX = centerX + radius * 0.6 * Math.cos(textAngle);
+                const textY = centerY + radius * 0.6 * Math.sin(textAngle);
+                ctx.fillStyle = (segment.hex === '#ecf0f1') ? '#2c3e50' : 'white'; // Adjust text color for contrast
+                ctx.font = 'bold 14px Poppins';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                if (segment.percentage > 4) { // Only show percentage if slice is large enough
+                    ctx.fillText(`${segment.percentage}%`, textX, textY);
+                }
+
+                startAngle = endAngle;
+            });
+        }
+
+        // Intersection Observer for fade-in effect on sections
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the section is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        observer.unobserve(entry.target); // Stop observing once it's visible
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                // Don't observe the hero section, it's already visible
+                if (section.id !== '') { // Assuming hero section has no ID or a specific class to exclude
+                    observer.observe(section);
+                }
+            });
+
+            // Draw the pie chart once the DOM is ready
+            drawColorPieChart();
+        });
+    </script>
+</body>
+</html>

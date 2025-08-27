@@ -1,0 +1,45 @@
+🧪 Theme 2: "Bold Tech Edge"
+(Startup-driven, futuristic, confident – HAX-inspired with a splash of MF’s clarity)
+
+🎯 Design Philosophy
+A bold, dark-mode-inspired layout with pops of neon accents, custom iconography, and animated transitions. It projects tech innovation, speed, and disruption — perfect for pitching SmartForge as the future of microfabrication.
+
+🧱 Layout Elements
+Hero Section: Dark background with glitch text or dynamic outline animation; headline:
+“Smarter Molds. Faster Products.”
+
+Split-screen Sections: 50% text, 50% visual mockups with floating callouts
+
+Scrolling Stats Section: Numbers animate as you scroll ("20x faster to market", "10x cheaper", etc.)
+
+🎨 Color Palette
+Primary: Jet Black (#0D0D0D)
+
+Secondary: Slate Gray (#1E1E1E)
+
+Accent: Electric Cyan (#00FFFF) or Neon Lime (#B4FF00)
+
+Optional hover: Violet (#8B5CF6)
+
+🖋 Typography
+Header: Space Grotesk or Sora – futuristic, bold
+
+Body: IBM Plex Sans or Source Sans Pro
+
+Use monospace font for code snippets or machine names
+
+📸 Imagery Style
+Neon-lit machines or parts over black
+
+Studio-lit team shots (professional yet edgy)
+
+Isometric illustrations to show SmartForge tech stack
+
+🔗 UX Notes
+Toggle between light/dark mode (optional)
+
+Hover effects on CTAs (buttons glow/pulse subtly)
+
+Vertical nav bar (left or right side) on desktop
+
+Animated scrolling timeline showing prototype → production flow

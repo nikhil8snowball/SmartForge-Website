@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading... - SmartForge Blog</title>
+    <meta name="description" content="Loading blog post...">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/Company_Logo_for_second_design.svg" type="image/svg+xml">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="css/blog-post.css">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/Company_Logo_for_second_design.svg" alt="SmartForge Logo" class="logo-img">
+                    <span>SmartForge</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#breakthrough" class="nav-link">Breakthrough</a></li>
+                <li><a href="index.html#scaleup" class="nav-link">Scale-Up</a></li>
+                <li><a href="index.html#features" class="nav-link">Features</a></li>
+                <li><a href="index.html#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="index.html#offers" class="nav-link">Offers</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="https://calendly.com/contact-mfpolymers/30min" class="book-call-btn" target="_blank">Book a Call</a>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Post Content -->
+    <main class="blog-post-main">
+        <div class="container">
+            <!-- Loading State -->
+            <div id="loading" class="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Loading blog post...</p>
+            </div>
+
+            <!-- Blog Post Content -->
+            <article id="blog-post" class="blog-post" style="display: none;">
+                <!-- Post Header -->
+                <header class="post-header">
+                    <div class="post-meta">
+                        <span class="post-category" id="post-category">Category</span>
+                        <span class="post-date" id="post-date">Date</span>
+                        <span class="post-reading-time" id="post-reading-time">Reading time</span>
+                    </div>
+                    
+                    <h1 class="post-title" id="post-title">Post Title</h1>
+                    
+                    <p class="post-excerpt" id="post-excerpt">Post excerpt...</p>
+                    
+                    <div class="post-author">
+                        <img id="author-avatar" src="" alt="Author" class="author-avatar">
+                        <div class="author-info">
+                            <span class="author-name" id="author-name">Author Name</span>
+                            <span class="author-bio" id="author-bio">Author bio...</span>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Featured Image -->
+                <div class="post-featured-image">
+                    <img id="post-image" src="" alt="Featured image">
+                </div>
+
+                <!-- Post Content -->
+                <div class="post-content" id="post-content">
+                    <!-- Content will be loaded here -->
+                </div>
+
+                <!-- Post Footer -->
+                <footer class="post-footer">
+                    <div class="post-tags" id="post-tags">
+                        <!-- Tags will be loaded here -->
+                    </div>
+                    
+                    <div class="post-share">
+                        <h4>Share this post:</h4>
+                        <div class="share-buttons">
+                            <a href="#" class="share-btn share-twitter" onclick="shareOnTwitter()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.665 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                                </svg>
+                                Twitter
+                            </a>
+                            <a href="#" class="share-btn share-linkedin" onclick="shareOnLinkedIn()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                                LinkedIn
+                            </a>
+                            <a href="#" class="share-btn share-email" onclick="shareViaEmail()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M0 3v18h24V3H0zm21.518 2L12 12.713 2.482 5h19.036zM2 19V7.183l10 8.104 10-8.104V19H2z"/>
+                                </svg>
+                                Email
+                            </a>
+                        </div>
+                    </div>
+                </footer>
+            </article>
+
+            <!-- Related Posts -->
+            <section id="related-posts" class="related-posts" style="display: none;">
+                <h2>Related Posts</h2>
+                <div class="related-posts-grid" id="related-posts-grid">
+                    <!-- Related posts will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Back to Blog -->
+            <div class="back-to-blog">
+                <a href="blog.html" class="back-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="m15 18-6-6 6-6"/>
+                    </svg>
+                    Back to Blog
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SmartForge</h3>
+                    <p>Revolutionizing microfabrication with bold tech innovation</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Get in touch to learn more about our revolutionary technology</p>
+                    <a href="https://calendly.com/contact-mfpolymers/30min" class="footer-cta" target="_blank">Book a Call</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SmartForge. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Structured Data Script -->
+    <script type="application/ld+json" id="structured-data">
+        {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Loading...",
+            "description": "Loading blog post...",
+            "author": {
+                "@type": "Person",
+                "name": "SmartForge"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "SmartForge",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://smartforge.com/assets/images/Company_Logo_for_second_design.svg"
+                }
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://smartforge.com/blog"
+            }
+        }
+    </script>
+
+    <!-- Scripts -->
+    <script src="js/contentful.js"></script>
+    <script src="js/blog-post.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

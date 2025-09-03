@@ -604,7 +604,6 @@ p {
     }
     
     .hero-tagline {
-        order: 3 !important;
         margin-top: 1rem !important;
         position: relative !important;
         bottom: auto !important;
@@ -888,8 +887,7 @@ p {
     font-size: 0.9rem;
     font-weight: 400;
     z-index: 2;
-    order: 3;
-    margin-top: 2rem;
+    margin-top: 1rem;
     padding: 0 1rem;
 }
 
@@ -3250,9 +3248,8 @@ body.modal-open .gallery-overlay {
         bottom: auto !important;
         left: auto !important;
         transform: none !important;
-        margin-top: 2rem !important;
+        margin-top: 1rem !important;
         padding: 0 1rem !important;
-        order: 3 !important;
         z-index: 1 !important;
         width: 100% !important;
         text-align: center !important;

@@ -22,10 +22,10 @@ function initNavigation() {
     
     window.addEventListener('scroll', function() {
         if (window.scrollY > 100) {
-            navbar.style.background = 'rgba(13, 13, 13, 0.98)';
+            navbar.style.background = 'rgba(236, 240, 241, 0.98)'; // Secondary Neutral with transparency
             navbar.style.backdropFilter = 'blur(15px)';
         } else {
-            navbar.style.background = 'rgba(13, 13, 13, 0.95)';
+            navbar.style.background = 'rgba(236, 240, 241, 0.95)'; // Secondary Neutral with transparency
             navbar.style.backdropFilter = 'blur(10px)';
         }
     });

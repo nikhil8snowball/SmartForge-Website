@@ -169,7 +169,6 @@
     text-decoration: none;
     transition: color 0.3s ease;
     display: -webkit-box;
-    line-clamp: 2;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -179,27 +178,14 @@
     color: #ff6347;
 }
 
-.blog-card-row {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 16px;
-    align-items: start;
-    margin-bottom: 16px;
-}
-
-.blog-card-author-col {
-    display: flex;
-    align-items: center;
-}
-
 .blog-card-excerpt {
     color: #7f8c8d;
     font-family: 'Poppins', sans-serif;
     font-size: 0.9rem;
     line-height: 1.5;
-    margin: 0;
+    margin: 0 0 20px 0;
+    flex: 1;
     display: -webkit-box;
-    line-clamp: 3;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -460,10 +446,6 @@
     
     .blog-card-content {
         padding: 20px;
-    }
-
-    .blog-card-row {
-        grid-template-columns: 1fr;
     }
     
     .blog-card-title {

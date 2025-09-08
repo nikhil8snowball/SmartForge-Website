@@ -105,34 +105,65 @@ class BlogPostManager {
         
         let html = '';
         
+        const getTextFromNode = (node) => {
+            if (!node) return '';
+            if (node.nodeType === 'text') {
+                let text = node.value || '';
+                if (node.marks) {
+                    node.marks.forEach(mark => {
+                        switch (mark.type) {
+                            case 'bold':
+                                text = `<strong>${text}</strong>`; break;
+                            case 'italic':
+                                text = `<em>${text}</em>`; break;
+                            case 'underline':
+                                text = `<u>${text}</u>`; break;
+                            case 'code':
+                                text = `<code>${text}</code>`; break;
+                        }
+                    });
+                }
+                return text;
+            }
+            if (node.content && Array.isArray(node.content)) {
+                return node.content.map(getTextFromNode).join('');
+            }
+            return '';
+        };
+
+        const resolveAsset = (target) => {
+            // Prefer includes arrays on currentPost to resolve assets by ID
+            const assetId = target?.sys?.id;
+            if (!assetId || !this.currentPost) return null;
+            const asset = (this.currentPost.includesAssets || []).find(a => a.sys?.id === assetId);
+            const file = asset?.fields?.file;
+            if (file?.url) {
+                return { url: `https:${file.url}`, title: asset.fields.title || '', description: asset.fields.description || '' };
+            }
+            return null;
+        };
+
         richText.content.forEach(node => {
             if (node.nodeType === 'paragraph') {
                 html += '<p>';
                 if (node.content) {
-                    node.content.forEach(textNode => {
-                        let text = textNode.value;
-                        if (textNode.marks) {
-                            textNode.marks.forEach(mark => {
-                                switch (mark.type) {
-                                    case 'bold':
-                                        text = `<strong>${text}</strong>`;
-                                        break;
-                                    case 'italic':
-                                        text = `<em>${text}</em>`;
-                                        break;
-                                    case 'underline':
-                                        text = `<u>${text}</u>`;
-                                        break;
-                                    case 'code':
-                                        text = `<code>${text}</code>`;
-                                        break;
-                                }
-                            });
+                    node.content.forEach(child => {
+                        if (child.nodeType === 'hyperlink') {
+                            const href = child.data?.uri || '#';
+                            const text = getTextFromNode(child);
+                            html += `<a href="${href}" target="_blank" rel="noopener noreferrer">${text}</a>`;
+                        } else {
+                            html += getTextFromNode(child);
                         }
-                        html += text;
                     });
                 }
                 html += '</p>';
+            } else if (node.nodeType === 'embedded-asset-block') {
+                const assetInfo = resolveAsset(node.data?.target);
+                if (assetInfo) {
+                    const alt = assetInfo.title || assetInfo.description || '';
+                    html += `<figure class="post-image"><img src="${assetInfo.url}" alt="${alt}"><figcaption>${alt}</figcaption></figure>`;
+                }
             } else if (node.nodeType === 'heading-1') {
                 html += `<h1>${node.content?.[0]?.value || ''}</h1>`;
             } else if (node.nodeType === 'heading-2') {
@@ -149,7 +180,8 @@ class BlogPostManager {
                 html += '<ul>';
                 if (node.content) {
                     node.content.forEach(listItem => {
-                        html += `<li>${listItem.content?.[0]?.content?.[0]?.value || ''}</li>`;
+                        const liText = listItem?.content?.map(getTextFromNode).join('') || '';
+                        html += `<li>${liText}</li>`;
                     });
                 }
                 html += '</ul>';
@@ -157,7 +189,8 @@ class BlogPostManager {
                 html += '<ol>';
                 if (node.content) {
                     node.content.forEach(listItem => {
-                        html += `<li>${listItem.content?.[0]?.content?.[0]?.value || ''}</li>`;
+                        const liText = listItem?.content?.map(getTextFromNode).join('') || '';
+                        html += `<li>${liText}</li>`;
                     });
                 }
                 html += '</ol>';
@@ -166,7 +199,8 @@ class BlogPostManager {
                 if (node.content) {
                     node.content.forEach(blockNode => {
                         if (blockNode.nodeType === 'paragraph') {
-                            html += `<p>${blockNode.content?.[0]?.value || ''}</p>`;
+                            const inner = blockNode.content?.map(getTextFromNode).join('') || '';
+                            html += `<p>${inner}</p>`;
                         }
                     });
                 }
@@ -181,7 +215,8 @@ class BlogPostManager {
                         if (tableRow.content) {
                             tableRow.content.forEach(cell => {
                                 const tag = tableRow.nodeType === 'table-header-row' ? 'th' : 'td';
-                                html += `<${tag}>${cell.content?.[0]?.value || ''}</${tag}>`;
+                                const cellText = cell.content?.map(getTextFromNode).join('') || '';
+                                html += `<${tag}>${cellText}</${tag}>`;
                             });
                         }
                         html += '</tr>';

@@ -72,14 +72,16 @@ class BlogManager {
                     </div>
                     <div class="blog-card-content">
                         <h3 class="blog-card-title">${post.title}</h3>
-                        <p class="blog-card-excerpt">${excerptDisplay}</p>
-                        <div class="blog-card-meta">
-                            <span class="blog-card-author">
-                                ${post.author?.avatar ? `<img src="${post.author.avatar}" alt="${authorName}" class="author-avatar">` : ''}
-                                ${authorName}
-                            </span>
-                            <span class="blog-card-date">${this.formatDate(publishDate)}</span>
-                            <span class="blog-card-reading-time">${readingTime} min read</span>
+                        <div class="blog-card-row">
+                            <p class="blog-card-excerpt">${excerptDisplay}</p>
+                            <div class="blog-card-meta">
+                                <span class="blog-card-author">
+                                    ${post.author?.avatar ? `<img src="${post.author.avatar}" alt="${authorName}" class="author-avatar">` : ''}
+                                    ${authorName}
+                                </span>
+                                <span class="blog-card-date">${this.formatDate(publishDate)}</span>
+                                <span class="blog-card-reading-time">${readingTime} min read</span>
+                            </div>
                         </div>
                         <div class="blog-card-tags">
                             ${(post.tags && post.tags.length > 0) ? post.tags.map(tag => `<span class="tag">${tag}</span>`).join('') : '<span class="tag">General</span>'}

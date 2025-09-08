@@ -161,8 +161,8 @@ class BlogPostManager {
             } else if (node.nodeType === 'embedded-asset-block') {
                 const assetInfo = resolveAsset(node.data?.target);
                 if (assetInfo) {
-                    const alt = assetInfo.title || assetInfo.description || '';
-                    html += `<figure class="post-image"><img src="${assetInfo.url}" alt="${alt}"><figcaption>${alt}</figcaption></figure>`;
+                    const alt = assetInfo.description || assetInfo.title || '';
+                    html += `<img class="post-image" src="${assetInfo.url}" alt="${alt}">`;
                 }
             } else if (node.nodeType === 'heading-1') {
                 html += `<h1>${node.content?.[0]?.value || ''}</h1>`;

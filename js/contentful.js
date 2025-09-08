@@ -138,6 +138,9 @@ class ContentfulClient {
             slug: fields.slug,
             excerpt: fields.excerpt,
             content: fields.content,
+            // Pass through includes for rich text asset resolution
+            includesAssets: includes.Asset || [],
+            includesEntries: includes.Entry || [],
             featuredImage: this.getAssetUrlFrom(fields.featuredImage, includes),
             author: this.processAuthor(this.resolveLink(fields.author, includes), includes),
             category: this.processCategory(this.resolveLink(fields.category, includes)),

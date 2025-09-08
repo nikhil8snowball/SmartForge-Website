@@ -58,30 +58,34 @@ class BlogManager {
         const readingTime = post.readingTime || '5';
         const publishDate = post.publishDate || new Date().toISOString();
         const authorName = post.author?.name || 'SmartForge';
+        const excerptText = (post.excerpt || '').trim();
+        const words = excerptText.split(/\s+/).filter(Boolean);
+        const shortExcerpt = words.slice(0, 10).join(' ');
+        const excerptDisplay = shortExcerpt ? shortExcerpt + (words.length > 10 ? '…' : '') : 'No excerpt available';
         
         return `
             <article class="blog-card" data-slug="${post.slug}">
-                <div class="blog-card-image">
-                    <img src="${featuredImage}" alt="${post.title}" loading="lazy" onerror="this.src='assets/images/Company_Logo_for_second_design.png'">
-                    ${post.featured ? '<div class="featured-badge">⭐ Featured</div>' : ''}
-                </div>
-                <div class="blog-card-content">
-                    <h3 class="blog-card-title">
-                        <a href="blog-post.html?slug=${post.slug}">${post.title}</a>
-                    </h3>
-                    <p class="blog-card-excerpt">${post.excerpt || 'No excerpt available'}</p>
-                    <div class="blog-card-meta">
-                        <span class="blog-card-author">
-                            ${post.author?.avatar ? `<img src="${post.author.avatar}" alt="${authorName}" class="author-avatar">` : ''}
-                            ${authorName}
-                        </span>
-                        <span class="blog-card-date">${this.formatDate(publishDate)}</span>
-                        <span class="blog-card-reading-time">${readingTime} min read</span>
+                <a class="blog-card-link" href="blog-post.html?slug=${post.slug}">
+                    <div class="blog-card-image">
+                        <img src="${featuredImage}" alt="${post.title}" loading="lazy" onerror="this.src='assets/images/Company_Logo_for_second_design.png'">
+                        ${post.featured ? '<div class="featured-badge">⭐ Featured</div>' : ''}
                     </div>
-                    <div class="blog-card-tags">
-                        ${(post.tags && post.tags.length > 0) ? post.tags.map(tag => `<span class="tag">${tag}</span>`).join('') : '<span class="tag">General</span>'}
+                    <div class="blog-card-content">
+                        <h3 class="blog-card-title">${post.title}</h3>
+                        <p class="blog-card-excerpt">${excerptDisplay}</p>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-author">
+                                ${post.author?.avatar ? `<img src="${post.author.avatar}" alt="${authorName}" class="author-avatar">` : ''}
+                                ${authorName}
+                            </span>
+                            <span class="blog-card-date">${this.formatDate(publishDate)}</span>
+                            <span class="blog-card-reading-time">${readingTime} min read</span>
+                        </div>
+                        <div class="blog-card-tags">
+                            ${(post.tags && post.tags.length > 0) ? post.tags.map(tag => `<span class="tag">${tag}</span>`).join('') : '<span class="tag">General</span>'}
+                        </div>
                     </div>
-                </div>
+                </a>
             </article>
         `;
     }

@@ -5,7 +5,7 @@
 .blog-post-main {
     background: #ecf0f1;
     min-height: 100vh;
-    padding: 40px 0;
+    padding: 80px 0 40px 0;
 }
 
 /* Loading State */

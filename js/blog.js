@@ -72,16 +72,12 @@ class BlogManager {
                     </div>
                     <div class="blog-card-content">
                         <h3 class="blog-card-title">${post.title}</h3>
-                        <div class="blog-card-row">
-                            <div class="blog-card-author-col">
-                                <span class="blog-card-author">
-                                    ${post.author?.avatar ? `<img src="${post.author.avatar}" alt="${authorName}" class="author-avatar">` : ''}
-                                    ${authorName}
-                                </span>
-                            </div>
-                            <p class="blog-card-excerpt">${excerptDisplay}</p>
-                        </div>
+                        <p class="blog-card-excerpt">${excerptDisplay}</p>
                         <div class="blog-card-meta">
+                            <span class="blog-card-author">
+                                ${post.author?.avatar ? `<img src="${post.author.avatar}" alt="${authorName}" class="author-avatar">` : ''}
+                                ${authorName}
+                            </span>
                             <span class="blog-card-date">${this.formatDate(publishDate)}</span>
                             <span class="blog-card-reading-time">${readingTime} min read</span>
                         </div>

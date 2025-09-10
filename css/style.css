@@ -305,7 +305,7 @@ p {
     left: 0;
     right: 0;
     width: 100%;
-    background: #ecf0f1; /* Secondary Neutral - Cloud */
+    background: rgba(236, 240, 241, 0.9); /* Secondary Neutral - Cloud with transparency */
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(10, 28, 63, 0.2); /* Primary Dark border */
     z-index: 1000;
@@ -347,7 +347,7 @@ p {
         left: -100%;
         width: 100%;
         height: calc(100vh - 70px);
-        background: #ecf0f1; /* Secondary Neutral - Cloud */
+        background: rgba(236, 240, 241, 0.95); /* Secondary Neutral - Cloud with transparency */
         backdrop-filter: blur(15px);
         flex-direction: column;
         justify-content: flex-start;
@@ -411,41 +411,13 @@ p {
     width: 55px;
     height: 55px;
     object-fit: contain;
-    border-radius: 8px;
-    background: transparent;
-    padding: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    position: relative;
-    transition: var(--transition-smooth);
-    transform: scale(1.2);
-    border: 2px solid rgba(255, 99, 71, 0.2); /* Reduced opacity for 10% usage */
 }
 
-.logo-img::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: var(--primary-accent); /* Primary accent for highlights (10% usage) */
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    z-index: -1;
-    opacity: 0.8;
-    transition: var(--transition-smooth);
-}
 
 .logo a:hover .logo-img {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
-    border-color: var(--primary-accent);
-    border-width: 3px;
+    opacity: 0.8;
 }
 
-.logo a:hover .logo-img::before {
-    opacity: 1;
-    /* Removed animation for clean, elite appearance */
-}
 
 .nav-menu {
     display: flex;
@@ -2809,7 +2781,7 @@ body.modal-open .gallery-overlay {
         left: -100%;
         top: 70px;
         flex-direction: column;
-        background-color: rgba(10, 28, 63, 0.98);
+        background-color: rgba(10, 28, 63, 0.9);
         backdrop-filter: blur(15px);
         width: 100%;
         text-align: center;
@@ -4407,7 +4379,7 @@ section:has(.team-grid) .section-title {
         left: 0 !important;
         width: 100% !important;
         height: calc(100vh - 70px) !important;
-        background: rgba(10, 28, 63, 0.98) !important;
+        background: rgba(10, 28, 63, 0.9) !important;
         backdrop-filter: blur(15px) !important;
         z-index: 999 !important;
         overflow-y: auto !important;

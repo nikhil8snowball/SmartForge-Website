@@ -355,7 +355,7 @@ class BlogPostManager {
                 "name": "MicroForge Polymers",
                 "logo": {
                     "@type": "ImageObject",
-                    "url": "https://microforge.com/assets/images/Company_Logo_for_second_design.svg"
+                    "url": "https://microforge.com/assets/images/final logo.svg"
                 }
             },
             "datePublished": this.currentPost.publishDate,

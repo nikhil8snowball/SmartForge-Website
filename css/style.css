@@ -708,6 +708,7 @@ p {
         padding: 0 1rem;
         order: 3;
         z-index: 1;
+        font-size: 1.1rem;
     }
 }
 
@@ -884,8 +885,8 @@ p {
     transform: none;
     text-align: center;
     color: var(--primary-white); /* Pure white text for clean appearance */
-    font-size: 0.9rem;
-    font-weight: 400;
+    font-size: 1.2rem;
+    font-weight: 500;
     z-index: 2;
     margin-top: 1rem;
     padding: 0 1rem;
@@ -896,8 +897,8 @@ p {
     margin: 0 !important;
     padding: 0 !important;
     line-height: 1.4 !important;
-    font-size: 0.9rem !important;
-    font-weight: 400 !important;
+    font-size: 1.2rem !important;
+    font-weight: 500 !important;
 }
 
 /* ===== BUTTONS ===== */
@@ -3251,7 +3252,7 @@ body.modal-open .gallery-overlay {
         z-index: 1 !important;
         width: 100% !important;
         text-align: center !important;
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
     
     .hero-tagline p {
@@ -3357,7 +3358,7 @@ body.modal-open .gallery-overlay {
         z-index: 1 !important;
         width: 100% !important;
         text-align: center !important;
-        font-size: 0.75rem;
+        font-size: 0.9rem;
     }
     
     .hero-tagline p {

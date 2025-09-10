@@ -1508,8 +1508,8 @@ p {
 
 @media (min-width: 769px) {
     .contact-content {
-        grid-template-columns: 1fr 1.4fr; /* Give right side more space */
-        gap: 4rem;
+        grid-template-columns: 1fr 2fr; /* Give Calendly widget much more space */
+        gap: 3rem;
     }
 }
 
@@ -1643,7 +1643,8 @@ p {
 
 /* Calendly Widget Styling */
 .calendly-widget-container {
-    min-height: 600px;
+    min-height: 400px;
+    height: 400px;
     width: 100%;
     border-radius: 12px;
     overflow: hidden;
@@ -1657,10 +1658,18 @@ p {
     flex: 1.2; /* Give it more space than the contact info */
 }
 
+/* Ensure Calendly widget uses full available width */
+.calendly-widget-container iframe {
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+}
+
 /* Responsive adjustments for Calendly widget */
 @media (max-width: 768px) {
     .calendly-widget-container {
-        min-height: 500px;
+        min-height: 350px;
+        height: 350px;
     }
     
     .calendly-container {

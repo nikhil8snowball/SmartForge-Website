@@ -376,7 +376,7 @@ p {
         left: -100%;
         width: 100%;
         height: calc(100vh - 70px);
-        background: rgba(236, 240, 241, 0.95); /* Secondary Neutral - Cloud with transparency */
+        background: rgba(10, 28, 63, 0.95); /* Primary Dark Blue with transparency */
         backdrop-filter: blur(15px);
         flex-direction: column;
         justify-content: flex-start;
@@ -2852,27 +2852,7 @@ body.modal-open .gallery-overlay {
         padding: 0 1rem;
     }
     
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        flex-direction: column;
-        background-color: rgba(10, 28, 63, 0.9);
-        backdrop-filter: blur(15px);
-        width: 100%;
-        text-align: center;
-        transition: var(--transition-smooth);
-        padding: 2rem 0;
-        border-top: 1px solid rgba(255, 99, 71, 0.2);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        z-index: 999;
-        height: calc(100vh - 70px);
-        overflow-y: auto;
-    }
-    
-    .nav-menu.active {
-        left: 0;
-    }
+    /* Mobile menu styles consolidated - using first implementation */
     
     .nav-menu li {
         margin: 0;
@@ -2907,13 +2887,7 @@ body.modal-open .gallery-overlay {
     }
     
     /* Hide desktop navigation */
-    .nav-menu {
-        display: none;
-    }
-    
-    .nav-menu.active {
-        display: flex;
-    }
+    /* Mobile menu visibility handled by position: fixed and left: -100% */
     
     /* Ensure proper spacing for mobile menu items */
     .nav-menu .nav-link {
@@ -4724,27 +4698,9 @@ section:has(.team-grid) .section-title {
         flex: 1 !important;
     }
     
-    /* Hide desktop nav on mobile */
-    .nav-menu {
-        display: none !important;
-    }
+    /* Hide desktop nav on mobile - handled by position: fixed and left: -100% */
     
-    .nav-menu.active {
-        display: flex !important;
-    }
-    
-    /* Ensure mobile menu covers full screen */
-    .nav-menu.active {
-        position: fixed !important;
-        top: 70px !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: calc(100vh - 70px) !important;
-        background: rgba(10, 28, 63, 0.9) !important;
-        backdrop-filter: blur(15px) !important;
-        z-index: 999 !important;
-        overflow-y: auto !important;
-    }
+    /* Mobile menu active state handled by first implementation */
 }
 
 /* Extra small mobile fixes */

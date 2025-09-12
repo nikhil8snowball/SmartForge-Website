@@ -22,10 +22,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 hamburger.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
-                    console.log('Fallback hamburger clicked!');
+                    console.log('Hamburger clicked!');
                     hamburger.classList.toggle('active');
                     navMenu.classList.toggle('active');
-                    console.log('Fallback menu toggled. Active classes:', {
+                    console.log('Menu toggled. Active classes:', {
                         hamburger: hamburger.classList.contains('active'),
                         navMenu: navMenu.classList.contains('active')
                     });
@@ -33,51 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Fallback mobile menu initialized');
             }
         }, 500);
-        
-        // Additional fallback for about page specifically
-        setTimeout(() => {
-            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-            if (currentPage === 'about.html') {
-                const hamburger = document.querySelector('.hamburger');
-                const navMenu = document.querySelector('.nav-menu');
-                
-                if (hamburger && navMenu && !hamburger.hasAttribute('data-about-initialized')) {
-                    hamburger.setAttribute('data-about-initialized', 'true');
-                    hamburger.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        console.log('About page fallback hamburger clicked!');
-                        hamburger.classList.toggle('active');
-                        navMenu.classList.toggle('active');
-                        console.log('About page fallback menu toggled. Active classes:', {
-                            hamburger: hamburger.classList.contains('active'),
-                            navMenu: navMenu.classList.contains('active')
-                        });
-                    });
-                    console.log('About page fallback mobile menu initialized');
-                }
-            }
-        }, 1000);
-        
-        // Final safety net - direct event delegation for mobile menu
-        document.addEventListener('click', function(e) {
-            if (e.target.closest('.hamburger')) {
-                const hamburger = e.target.closest('.hamburger');
-                const navMenu = document.querySelector('.nav-menu');
-                
-                if (navMenu) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('Direct delegation hamburger clicked!');
-                    hamburger.classList.toggle('active');
-                    navMenu.classList.toggle('active');
-                    console.log('Direct delegation menu toggled. Active classes:', {
-                        hamburger: hamburger.classList.contains('active'),
-                        navMenu: navMenu.classList.contains('active')
-                    });
-                }
-            }
-        });
         
         console.log('SmartForge Theme 2 - Bold Tech Edge initialized successfully');
     } catch (error) {

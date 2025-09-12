@@ -204,6 +204,13 @@ body {
     color: var(--primary-white);
     line-height: 1.6;
     overflow-x: hidden;
+    /* Prevent mid-word breaking - words move to next line instead */
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
 }
 
 .container {
@@ -217,6 +224,13 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-header);
     font-weight: 700;
     line-height: 1.2;
+    /* Prevent mid-word breaking for headings */
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
 }
 
 h1 {
@@ -240,6 +254,13 @@ p {
     font-size: 1.1rem;
     color: var(--text-gray);
     font-family: var(--font-body);
+    /* Prevent mid-word breaking for paragraphs */
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
 }
 
 /* ===== LAYOUT UTILITIES ===== */
@@ -265,6 +286,14 @@ p {
         margin-bottom: 2rem !important;
         padding: 0 1rem;
         line-height: 1.3;
+        /* Prevent mid-word breaking on mobile - words move to next line */
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
+        hyphens: none !important;
+        -webkit-hyphens: none !important;
+        -moz-hyphens: none !important;
+        -ms-hyphens: none !important;
+        white-space: normal !important;
     }
     
     .section-title::after {
@@ -609,12 +638,28 @@ p {
         line-height: 1.3;
         margin-bottom: 1rem;
         padding: 0 0.5rem;
+        /* Prevent mid-word breaking on mobile - words move to next line */
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
+        hyphens: none !important;
+        -webkit-hyphens: none !important;
+        -moz-hyphens: none !important;
+        -ms-hyphens: none !important;
+        white-space: normal !important;
     }
     
     .hero-subtitle {
         font-size: 1.1rem !important;
         margin-bottom: 1.5rem;
         padding: 0 0.5rem;
+        /* Prevent mid-word breaking on mobile - words move to next line */
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
+        hyphens: none !important;
+        -webkit-hyphens: none !important;
+        -moz-hyphens: none !important;
+        -ms-hyphens: none !important;
+        white-space: normal !important;
     }
     
     .impossible-text {
@@ -694,11 +739,25 @@ p {
         font-size: 1.8rem !important;
         line-height: 1.4;
         padding: 0 0.3rem;
+        /* Fix word breaking on small mobile */
+        word-break: normal !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+        -webkit-hyphens: auto !important;
+        -moz-hyphens: auto !important;
+        -ms-hyphens: auto !important;
     }
     
     .hero-subtitle {
         font-size: 1rem !important;
         padding: 0 0.3rem;
+        /* Fix word breaking on small mobile */
+        word-break: normal !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+        -webkit-hyphens: auto !important;
+        -moz-hyphens: auto !important;
+        -ms-hyphens: auto !important;
     }
     
     .impossible-text {
@@ -750,6 +809,14 @@ p {
     line-height: 1.3;
     text-align: center;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    /* Prevent mid-word breaking - words move to next line */
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    white-space: normal;
 }
 
 /* Removed glitch text effects for clean, elite appearance */
@@ -4316,17 +4383,29 @@ section:has(.team-grid) .section-title {
         max-width: 100% !important;
     }
     
-    /* Ensure proper text wrapping */
+    /* Ensure proper text wrapping - prevent mid-word breaking */
     .hero-title,
     .hero-subtitle,
     .section-title,
     .feature-item h3,
     .offer-item h3,
     .process-step h3,
-    .breakthrough-text h3 {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
+    .breakthrough-text h3,
+    .feature-item p,
+    .offer-item p,
+    .process-step p,
+    .breakthrough-text p,
+    .stat-label,
+    .mission-stat-item p,
+    .tech-features li,
+    .offer-benefits li {
+        word-break: normal !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+        -webkit-hyphens: auto !important;
+        -moz-hyphens: auto !important;
+        -ms-hyphens: auto !important;
+        word-wrap: break-word !important;
     }
     
     /* Fix any floating elements */
@@ -4494,5 +4573,50 @@ section:has(.team-grid) .section-title {
     .process-step:hover,
     .gallery-item:hover {
         transform: none !important;
+    }
+}
+
+/* ===== GLOBAL WORD BREAKING FIXES ===== */
+/* Prevent mid-word breaking - words move to next line instead */
+* {
+    /* Apply to all elements as a fallback */
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+}
+
+/* Specific fixes for common text elements */
+h1, h2, h3, h4, h5, h6,
+p, span, div, li, td, th,
+.hero-title, .hero-subtitle, .section-title,
+.feature-item h3, .offer-item h3, .process-step h3,
+.feature-item p, .offer-item p, .process-step p,
+.stat-label, .mission-stat-item p,
+.tech-features li, .offer-benefits li,
+.blog-card-title, .blog-card-excerpt,
+.post-title, .post-excerpt, .post-content,
+.nav-link, .cta-button, .book-call-btn {
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+    -moz-hyphens: none !important;
+    -ms-hyphens: none !important;
+    white-space: normal !important;
+}
+
+/* Ensure proper line breaking for long words */
+@media (max-width: 768px) {
+    * {
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
+        hyphens: none !important;
+        -webkit-hyphens: none !important;
+        -moz-hyphens: none !important;
+        -ms-hyphens: none !important;
+        white-space: normal !important;
     }
 }

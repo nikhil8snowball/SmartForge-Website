@@ -90,6 +90,14 @@
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    /* Prevent mid-word breaking - words move to next line */
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    white-space: normal;
 }
 
 .post-excerpt {
@@ -100,6 +108,14 @@
     max-width: 700px;
     margin: 0 auto 30px;
     opacity: 0.9;
+    /* Prevent mid-word breaking - words move to next line */
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    white-space: normal;
 }
 
 .post-author {
@@ -171,6 +187,14 @@
     font-size: 1.1rem;
     line-height: 1.8;
     color: #0A1C3F;
+    /* Prevent mid-word breaking - words move to next line */
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    white-space: normal;
 }
 
 .post-content h2 {
@@ -181,6 +205,14 @@
     margin: 40px 0 20px 0;
     border-bottom: 2px solid #ff6347;
     padding-bottom: 10px;
+    /* Prevent mid-word breaking - words move to next line */
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    white-space: normal;
 }
 
 .post-content h3 {
@@ -189,6 +221,14 @@
     font-weight: 600;
     color: #0A1C3F;
     margin: 30px 0 15px 0;
+    /* Prevent mid-word breaking - words move to next line */
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    white-space: normal;
 }
 
 .post-content h4 {
@@ -197,11 +237,27 @@
     font-weight: 600;
     color: #0A1C3F;
     margin: 25px 0 12px 0;
+    /* Prevent mid-word breaking - words move to next line */
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    white-space: normal;
 }
 
 .post-content p {
     margin-bottom: 20px;
     color: #0A1C3F;
+    /* Prevent mid-word breaking - words move to next line */
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    white-space: normal;
 }
 
 .post-content ul, .post-content ol {

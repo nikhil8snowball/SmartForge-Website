@@ -18,7 +18,23 @@ class ComponentLoader {
             // Find the header placeholder or replace existing header
             const existingHeader = document.querySelector('.navbar');
             if (existingHeader) {
-                existingHeader.outerHTML = headerHtml;
+                // Check if we're on the about page and need to preserve navigation links
+                const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+                let modifiedHeaderHtml = headerHtml;
+                
+                if (currentPage === 'about.html') {
+                    // Update navigation links for about page
+                    modifiedHeaderHtml = headerHtml
+                        .replace('href="index.html#home"', 'href="index.html"')
+                        .replace('href="index.html#breakthrough"', 'href="index.html#breakthrough"')
+                        .replace('href="index.html#scaleup"', 'href="index.html#scaleup"')
+                        .replace('href="index.html#features"', 'href="index.html#features"')
+                        .replace('href="index.html#gallery"', 'href="index.html#gallery"')
+                        .replace('href="index.html#offers"', 'href="index.html#offers"')
+                        .replace('href="index.html#contact"', 'href="index.html#contact"');
+                }
+                
+                existingHeader.outerHTML = modifiedHeaderHtml;
                 
                 // Reinitialize mobile menu after header is loaded
                 this.initMobileMenu();
@@ -64,30 +80,38 @@ class ComponentLoader {
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
         
+        console.log('Initializing mobile menu - Hamburger:', hamburger, 'NavMenu:', navMenu);
+        
         if (hamburger && navMenu) {
-            // Remove any existing event listeners
-            hamburger.removeEventListener('click', this.handleHamburgerClick);
+            // Remove any existing event listeners to prevent duplicates
+            const newHamburger = hamburger.cloneNode(true);
+            hamburger.parentNode.replaceChild(newHamburger, hamburger);
             
             // Add new event listener
-            this.handleHamburgerClick = () => {
-                hamburger.classList.toggle('active');
+            newHamburger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('About page hamburger clicked!');
+                newHamburger.classList.toggle('active');
                 navMenu.classList.toggle('active');
-            };
-            
-            hamburger.addEventListener('click', this.handleHamburgerClick);
+                console.log('About page menu toggled. Active classes:', {
+                    hamburger: newHamburger.classList.contains('active'),
+                    navMenu: navMenu.classList.contains('active')
+                });
+            });
             
             // Close menu when clicking on a link
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
-                    hamburger.classList.remove('active');
+                    newHamburger.classList.remove('active');
                     navMenu.classList.remove('active');
                 });
             });
             
-            console.log('Mobile menu initialized successfully');
+            console.log('About page mobile menu initialized successfully');
         } else {
-            console.warn('Mobile menu elements not found:', { hamburger, navMenu });
+            console.warn('About page mobile menu elements not found:', { hamburger, navMenu });
         }
     }
 }

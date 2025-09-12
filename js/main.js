@@ -10,6 +10,30 @@ document.addEventListener('DOMContentLoaded', function() {
         initAnimatedStats();
         initMobileMenu();
         
+        // Fallback mobile menu initialization after a short delay
+        setTimeout(() => {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            console.log('Fallback check - Hamburger:', hamburger, 'NavMenu:', navMenu);
+            
+            if (hamburger && navMenu && !hamburger.hasAttribute('data-initialized')) {
+                hamburger.setAttribute('data-initialized', 'true');
+                hamburger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Hamburger clicked!');
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    console.log('Menu toggled. Active classes:', {
+                        hamburger: hamburger.classList.contains('active'),
+                        navMenu: navMenu.classList.contains('active')
+                    });
+                });
+                console.log('Fallback mobile menu initialized');
+            }
+        }, 500);
+        
         console.log('SmartForge Theme 2 - Bold Tech Edge initialized successfully');
     } catch (error) {
         console.error('Error initializing SmartForge Theme 2:', error);
@@ -210,20 +234,38 @@ function initMobileMenu() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     
+    console.log('Initializing mobile menu - Hamburger:', hamburger, 'NavMenu:', navMenu);
+    
     if (hamburger && navMenu) {
-        hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('active');
+        // Remove any existing event listeners to prevent duplicates
+        const newHamburger = hamburger.cloneNode(true);
+        hamburger.parentNode.replaceChild(newHamburger, hamburger);
+        
+        // Add event listener to the new element
+        newHamburger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Main hamburger clicked!');
+            newHamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
+            console.log('Main menu toggled. Active classes:', {
+                hamburger: newHamburger.classList.contains('active'),
+                navMenu: navMenu.classList.contains('active')
+            });
         });
         
         // Close menu when clicking on a link
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
-                hamburger.classList.remove('active');
+                newHamburger.classList.remove('active');
                 navMenu.classList.remove('active');
             });
         });
+        
+        console.log('Mobile menu initialized successfully');
+    } else {
+        console.warn('Mobile menu elements not found:', { hamburger, navMenu });
     }
 }
 

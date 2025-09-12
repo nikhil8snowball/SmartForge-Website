@@ -404,12 +404,12 @@ p {
         font-size: 1.1rem;
         border-radius: 0;
         margin: 0;
-        color: #000000; /* Black */
+        color: #ffffff !important; /* White text for mobile menu */
     }
     
     .nav-menu .nav-link:hover {
         background: rgba(255, 99, 71, 0.1);
-        color: var(--primary-accent);
+        color: #ff8a65 !important; /* Lighter orange for better visibility on dark background */
     }
 }
 
@@ -2886,6 +2886,7 @@ body.modal-open .gallery-overlay {
         border-bottom: 1px solid rgba(255, 99, 71, 0.1);
         width: 100%;
         box-sizing: border-box;
+        color: #ffffff !important; /* White text for mobile menu */
     }
     
     .nav-menu .nav-link:hover {
@@ -2922,12 +2923,13 @@ body.modal-open .gallery-overlay {
         font-weight: 500;
         text-transform: uppercase;
         letter-spacing: 0.5px;
+        color: #ffffff !important; /* White text for mobile menu */
     }
     
     /* Add hover effects for mobile menu */
     .nav-menu .nav-link:hover {
         background: rgba(255, 99, 71, 0.15);
-        color: var(--primary-accent);
+        color: #ff8a65 !important; /* Lighter orange for better visibility on dark background */
     }
     
     /* Ensure mobile menu doesn't interfere with other elements */
@@ -4123,21 +4125,29 @@ section:has(.team-grid) .section-title {
     }
     
     .mission-stats {
-        flex-direction: row;
-        gap: 1rem;
-        padding: 0 1rem;
+        flex-direction: column !important;
+        gap: 1.5rem;
+        align-items: center;
+        margin-top: 2rem;
     }
     
     .mission-stat-item {
-        padding: 1rem 0.5rem;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        width: 100%;
+        max-width: 200px;
+        text-align: center;
     }
     
     .mission-stat-item h3 {
         font-size: 2rem;
+        margin-bottom: 0.5rem;
     }
     
     .mission-stat-item p {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
+        margin-bottom: 0;
     }
     
     .custom-material-development {
@@ -4155,11 +4165,176 @@ section:has(.team-grid) .section-title {
     .video-overlay p {
         font-size: 0.8rem;
     }
+    
+    /* About page hero mobile responsiveness */
+    .about-hero-title {
+        font-size: 2.5rem !important;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem !important;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    /* Mission section mobile responsiveness */
+    .mission-content h2 {
+        font-size: 2rem !important;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .mission-content p {
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Mission visual mobile responsiveness */
+    .mission-visual {
+        order: -1;
+        margin-bottom: 2rem;
+    }
+    
+    /* Service grid mobile responsiveness */
+    .service-grid {
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .service-item {
+        padding: 1.5rem;
+        text-align: center;
+    }
+    
+    .service-item h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .service-item p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    
+    .service-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    /* Specs grid mobile responsiveness */
+    .specs-grid {
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .spec-item {
+        padding: 1.5rem;
+        text-align: center;
+    }
+    
+    .spec-item h4 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .spec-item ul {
+        text-align: left;
+        padding-left: 1rem;
+    }
+    
+    .spec-item li {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Business model section mobile responsiveness */
+    .section h3 {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    .section p {
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .section ul {
+        text-align: left;
+        padding-left: 1rem;
+    }
+    
+    .section li {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Contact section mobile responsiveness */
+    .contact-content {
+        text-align: center;
+    }
+    
+    .contact-info h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .contact-info p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .calendly-header h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .calendly-header p {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .cta-button {
+        padding: 1rem 2rem !important;
+        font-size: 1rem !important;
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    /* Ensure word breaking consistency for about page mobile */
+    .about-hero-title,
+    .hero-subtitle,
+    .mission-content h2,
+    .mission-content p,
+    .service-item h3,
+    .service-item p,
+    .spec-item h4,
+    .spec-item li,
+    .section h3,
+    .section p,
+    .section li,
+    .contact-info h3,
+    .contact-info p,
+    .calendly-header h3,
+    .calendly-header p {
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
+        hyphens: none !important;
+        -webkit-hyphens: none !important;
+        -moz-hyphens: none !important;
+        -ms-hyphens: none !important;
+        white-space: normal !important;
+    }
 } 
 
 @media (max-width: 480px) {
     .video-container {
-        min-height: 250px;
+        min-height: 200px;
     }
     
     .video-overlay {
@@ -4172,6 +4347,104 @@ section:has(.team-grid) .section-title {
     
     .video-overlay p {
         font-size: 0.7rem;
+    }
+    
+    /* Extra small screen adjustments for about page */
+    .about-hero-title {
+        font-size: 2rem !important;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem !important;
+    }
+    
+    .mission-content h2 {
+        font-size: 1.8rem !important;
+    }
+    
+    .mission-content p {
+        font-size: 0.95rem;
+    }
+    
+    .service-item {
+        padding: 1rem;
+    }
+    
+    .service-item h3 {
+        font-size: 1.2rem;
+    }
+    
+    .service-item p {
+        font-size: 0.9rem;
+    }
+    
+    .spec-item {
+        padding: 1rem;
+    }
+    
+    .spec-item h4 {
+        font-size: 1.1rem;
+    }
+    
+    .spec-item li {
+        font-size: 0.85rem;
+    }
+    
+    .section h3 {
+        font-size: 1.3rem;
+    }
+    
+    .section p {
+        font-size: 0.95rem;
+    }
+    
+    .section li {
+        font-size: 0.9rem;
+    }
+    
+    .contact-info h3 {
+        font-size: 1.3rem;
+    }
+    
+    .contact-info p {
+        font-size: 0.95rem;
+    }
+    
+    .calendly-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .calendly-header p {
+        font-size: 0.85rem;
+    }
+    
+    .cta-button {
+        padding: 0.9rem 1.5rem !important;
+        font-size: 0.95rem !important;
+    }
+    
+    /* Ensure word breaking consistency for about page */
+    .about-hero-title,
+    .mission-content h2,
+    .mission-content p,
+    .service-item h3,
+    .service-item p,
+    .spec-item h4,
+    .spec-item li,
+    .section h3,
+    .section p,
+    .section li,
+    .contact-info h3,
+    .contact-info p,
+    .calendly-header h3,
+    .calendly-header p {
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
+        hyphens: none !important;
+        -webkit-hyphens: none !important;
+        -moz-hyphens: none !important;
+        -ms-hyphens: none !important;
+        white-space: normal !important;
     }
 }
 
@@ -4547,6 +4820,7 @@ section:has(.team-grid) .section-title {
     
     .nav-menu .nav-link {
         padding: 1.2rem 2rem !important;
+        color: #ffffff !important; /* Ensure white text for mobile menu */
     }
 }
 
@@ -4573,6 +4847,18 @@ section:has(.team-grid) .section-title {
     .process-step:hover,
     .gallery-item:hover {
         transform: none !important;
+    }
+}
+
+/* ===== MOBILE MENU TEXT COLOR FIXES ===== */
+/* Ensure mobile navigation menu text is always white */
+@media (max-width: 768px) {
+    .nav-menu .nav-link {
+        color: #ffffff !important; /* White text for mobile menu visibility */
+    }
+    
+    .nav-menu .nav-link:hover {
+        color: #ff8a65 !important; /* Lighter orange for hover state */
     }
 }
 

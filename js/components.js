@@ -19,6 +19,9 @@ class ComponentLoader {
             const existingHeader = document.querySelector('.navbar');
             if (existingHeader) {
                 existingHeader.outerHTML = headerHtml;
+                
+                // Reinitialize mobile menu after header is loaded
+                this.initMobileMenu();
             }
         } catch (error) {
             console.warn('Could not load header component:', error);
@@ -55,6 +58,37 @@ class ComponentLoader {
                 link.classList.add('active');
             }
         });
+    }
+
+    initMobileMenu() {
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (hamburger && navMenu) {
+            // Remove any existing event listeners
+            hamburger.removeEventListener('click', this.handleHamburgerClick);
+            
+            // Add new event listener
+            this.handleHamburgerClick = () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            };
+            
+            hamburger.addEventListener('click', this.handleHamburgerClick);
+            
+            // Close menu when clicking on a link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            console.log('Mobile menu initialized successfully');
+        } else {
+            console.warn('Mobile menu elements not found:', { hamburger, navMenu });
+        }
     }
 }
 

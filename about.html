@@ -289,7 +289,17 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="js/dev-config.js"></script>
+    <script>
+        // Only load dev config in development (when running locally)
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:') {
+            const script = document.createElement('script');
+            script.src = 'js/dev-config.js';
+            script.onerror = function() {
+                console.log('🔧 Dev config not found - using environment variables');
+            };
+            document.head.appendChild(script);
+        }
+    </script>
     <script src="js/config.js"></script>
     <script src="js/components.js"></script>
     <script src="js/main.js"></script>

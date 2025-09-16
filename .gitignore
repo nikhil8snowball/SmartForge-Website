@@ -5,6 +5,7 @@
 .env.test.local
 .env.production.local
 js/dev-config.js
+js/prod-config.js
 
 # Dependencies
 node_modules/

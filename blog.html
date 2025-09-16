@@ -137,9 +137,9 @@
 
     <!-- Scripts -->
     <script>
-        // Only load dev config in development (when running locally)
+        // Load appropriate config based on environment
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:') {
-            // Load dev config synchronously to ensure it's available before config.js
+            // Development: Load dev config synchronously
             const xhr = new XMLHttpRequest();
             xhr.open('GET', 'js/dev-config.js', false); // false = synchronous
             xhr.send();
@@ -147,6 +147,16 @@
                 eval(xhr.responseText);
             } else {
                 console.log('🔧 Dev config not found - using environment variables');
+            }
+        } else {
+            // Production: Load production config synchronously
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'js/prod-config.js', false); // false = synchronous
+            xhr.send();
+            if (xhr.status === 200) {
+                eval(xhr.responseText);
+            } else {
+                console.log('🔧 Prod config not found - using environment variables');
             }
         }
     </script>

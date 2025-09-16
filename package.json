@@ -1,0 +1,26 @@
+{
+  "name": "smartforge-polymers-website",
+  "version": "1.0.0",
+  "description": "SmartForge Polymers - Revolutionizing microfabrication with bold tech innovation",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build": "node js/env-injector.js",
+    "deploy": "npm run build && git add . && git commit -m 'Build for deployment' && git push"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "microfabrication",
+    "precision-manufacturing",
+    "micro-injection-molding",
+    "polymers",
+    "technology"
+  ],
+  "author": "SmartForge Polymers",
+  "license": "MIT"
+}

@@ -1,8 +1,11 @@
 // Contentful API Client
 class ContentfulClient {
     constructor() {
-        this.spaceId = 'wqlg3e74ktlj';
-        this.accessToken = 'ROnS4WgpvaoG-KVJ3xW8sf9mfEJlpMLhAENeRfky0AU';
+        // Get configuration from config.js
+        const contentfulConfig = config.getContentfulConfig();
+        this.spaceId = contentfulConfig.spaceId;
+        this.accessToken = contentfulConfig.accessToken;
+        this.environment = contentfulConfig.environment;
         this.baseUrl = 'https://cdn.contentful.com';
     }
 

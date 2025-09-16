@@ -1,4 +1,4 @@
-// ===== THEME 2: BOLD TECH EDGE JAVASCRIPT =====
+// ===== SMARTFORGE POLYMERS JAVASCRIPT =====
 
 document.addEventListener('DOMContentLoaded', function() {
     try {
@@ -8,11 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
         initScrollAnimations();
         initGalleryModals();
         initAnimatedStats();
-        initMobileMenu();
+        initNewsletterForm();
         
-        console.log('SmartForge Theme 2 - Bold Tech Edge initialized successfully');
+        console.log('SmartForge Polymers website initialized successfully');
     } catch (error) {
-        console.error('Error initializing SmartForge Theme 2:', error);
+        console.error('Error initializing SmartForge Polymers Theme 2:', error);
     }
 });
 
@@ -205,27 +205,7 @@ function initGalleryModals() {
     });
 }
 
-// ===== MOBILE MENU =====
-function initMobileMenu() {
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    if (hamburger && navMenu) {
-        hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-        
-        // Close menu when clicking on a link
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-    }
-}
+// Mobile menu functionality moved to components.js
 
 // ===== UTILITY FUNCTIONS =====
 function isValidEmail(email) {
@@ -280,6 +260,127 @@ function showNotification(message, type = 'info') {
             document.body.removeChild(notification);
         }, 300);
     }, 5000);
+}
+
+// ===== NEWSLETTER FORM FUNCTIONALITY =====
+function initNewsletterForm() {
+    const newsletterForm = document.getElementById('newsletter-form');
+    if (!newsletterForm) return;
+
+    newsletterForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const emailInput = document.getElementById('newsletter-email');
+        const submitBtn = document.querySelector('.newsletter-submit-btn');
+        const btnText = submitBtn.querySelector('.btn-text');
+        const btnLoading = submitBtn.querySelector('.btn-loading');
+        const messageDiv = document.getElementById('newsletter-message');
+        
+        const email = emailInput.value.trim();
+        
+        // Validate email
+        if (!isValidEmail(email)) {
+            showMessage(messageDiv, 'Please enter a valid email address.', 'error');
+            return;
+        }
+        
+        // Show loading state
+        submitBtn.disabled = true;
+        btnText.style.display = 'none';
+        btnLoading.style.display = 'inline-flex';
+        
+        try {
+            // Generate unique entry ID
+            const entryId = generateUniqueId();
+            
+            // Get Contentful configuration
+            if (typeof config === 'undefined') {
+                throw new Error('Configuration not loaded. Please refresh the page.');
+            }
+            const contentfulConfig = config.getContentfulConfig();
+            
+            // Create entry in Contentful
+            const createResponse = await fetch(
+                `https://api.contentful.com/spaces/${contentfulConfig.spaceId}/environments/${contentfulConfig.environment}/entries/${entryId}`,
+                {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${contentfulConfig.managementToken}`,
+                        'Content-Type': 'application/vnd.contentful.management.v1+json',
+                        'X-Contentful-Content-Type': 'newsletterSubscriber'
+                    },
+                    body: JSON.stringify({
+                        fields: {
+                            email: { 'en-US': email },
+                            subscriptionDate: { 'en-US': new Date().toISOString() },
+                            status: { 'en-US': 'active' },
+                            source: { 'en-US': 'website' }
+                        }
+                    })
+                }
+            );
+            
+            if (!createResponse.ok) {
+                throw new Error(`HTTP error! status: ${createResponse.status}`);
+            }
+            
+            const entryData = await createResponse.json();
+            
+            // Publish entry
+            const publishResponse = await fetch(
+                `https://api.contentful.com/spaces/${contentfulConfig.spaceId}/environments/${contentfulConfig.environment}/entries/${entryId}/published`,
+                {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${contentfulConfig.managementToken}`,
+                        'X-Contentful-Version': entryData.sys.version
+                    }
+                }
+            );
+            
+            if (!publishResponse.ok) {
+                throw new Error(`Failed to publish entry: ${publishResponse.status}`);
+            }
+            
+            // Success
+            showMessage(messageDiv, 'Thank you for subscribing! You\'ll receive our latest updates soon.', 'success');
+            emailInput.value = '';
+            
+        } catch (error) {
+            console.error('Newsletter subscription error:', error);
+            showMessage(messageDiv, 'Sorry, there was an error subscribing. Please try again later.', 'error');
+        } finally {
+            // Reset button state
+            submitBtn.disabled = false;
+            btnText.style.display = 'inline';
+            btnLoading.style.display = 'none';
+        }
+    });
+}
+
+// Helper function to validate email
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+// Helper function to generate unique ID
+function generateUniqueId() {
+    return 'newsletter-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+}
+
+// Helper function to show messages
+function showMessage(messageDiv, text, type) {
+    messageDiv.textContent = text;
+    messageDiv.className = `form-message ${type}`;
+    
+    // Auto-hide success messages after 5 seconds
+    if (type === 'success') {
+        setTimeout(() => {
+            messageDiv.className = 'form-message';
+            messageDiv.textContent = '';
+        }, 5000);
+    }
 }
 
 // ===== ENHANCED HOVER EFFECTS =====

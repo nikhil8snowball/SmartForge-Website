@@ -4,7 +4,7 @@
 
 window.LOCAL_CONFIG = {
     // Contentful Configuration - Replace with your actual values
-    CONTENTFUL_SPACE_ID: 'your-space-id-here',
+     CONTENTFUL_SPACE_ID: 'your-space-id-here',
     CONTENTFUL_ACCESS_TOKEN: 'your-access-token-here',
     CONTENTFUL_MANAGEMENT_TOKEN: 'your-management-token-here',
     CONTENTFUL_ENVIRONMENT: 'master',

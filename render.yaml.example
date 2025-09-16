@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: smartforge-website
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: CONTENTFUL_SPACE_ID
+        value: your-space-id-here
+      - key: CONTENTFUL_ACCESS_TOKEN
+        value: your-access-token-here
+      - key: CONTENTFUL_MANAGEMENT_TOKEN
+        value: your-management-token-here
+      - key: CONTENTFUL_ENVIRONMENT
+        value: master
+      - key: SITE_URL
+        value: https://your-domain.com
+      - key: SITE_NAME
+        value: SmartForge Polymers
+      - key: SITE_DESCRIPTION
+        value: Revolutionizing microfabrication with bold tech innovation
+      - key: NODE_ENV
+        value: production

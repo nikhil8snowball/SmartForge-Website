@@ -1785,7 +1785,7 @@ p {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, #00d4ff, #0099cc);
+    background: linear-gradient(135deg, #ff6347, #e55a3f);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1833,14 +1833,14 @@ p {
 
 .newsletter-form input[type="email"]:focus {
     outline: none;
-    border-color: #00d4ff;
+    border-color: #ff6347;
     background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.2);
+    box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.2);
 }
 
 .newsletter-submit-btn {
     padding: 1rem 2rem;
-    background: linear-gradient(135deg, #00d4ff, #0099cc);
+    background: linear-gradient(135deg, #ff6347, #e55a3f);
     border: none;
     border-radius: 12px;
     color: white;
@@ -1855,7 +1855,7 @@ p {
 
 .newsletter-submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(255, 99, 71, 0.3);
 }
 
 .newsletter-submit-btn:active {

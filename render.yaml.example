@@ -1,3 +1,4 @@
+# Option 1: Web Service (Recommended)
 services:
   - type: web
     name: smartforge-website
@@ -5,6 +6,8 @@ services:
     buildCommand: npm install
     startCommand: npm start
     envVars:
+      - key: NODE_ENV
+        value: production
       - key: CONTENTFUL_SPACE_ID
         value: your-space-id-here
       - key: CONTENTFUL_ACCESS_TOKEN
@@ -14,10 +17,29 @@ services:
       - key: CONTENTFUL_ENVIRONMENT
         value: master
       - key: SITE_URL
-        value: https://your-domain.com
+        value: https://smforge.com
       - key: SITE_NAME
         value: SmartForge Polymers
       - key: SITE_DESCRIPTION
         value: Revolutionizing microfabrication with bold tech innovation
-      - key: NODE_ENV
-        value: production
+
+# Option 2: Static Site (Alternative)
+# staticSites:
+#   - name: smartforge-website-static
+#     buildCommand: npm install && npm run build
+#     publishDirectory: .
+#     envVars:
+#       - key: CONTENTFUL_SPACE_ID
+#         value: your-space-id-here
+#       - key: CONTENTFUL_ACCESS_TOKEN
+#         value: your-access-token-here
+#       - key: CONTENTFUL_MANAGEMENT_TOKEN
+#         value: your-management-token-here
+#       - key: CONTENTFUL_ENVIRONMENT
+#         value: master
+#       - key: SITE_URL
+#         value: https://smforge.com
+#       - key: SITE_NAME
+#         value: SmartForge Polymers
+#       - key: SITE_DESCRIPTION
+#         value: Revolutionizing microfabrication with bold tech innovation

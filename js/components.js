@@ -5,8 +5,14 @@ class ComponentLoader {
     }
 
     async init() {
-        await this.loadHeader();
-        await this.loadFooter();
+        // Skip component loading on production/server environments
+        // since the HTML files already have the navigation built-in
+        if (window.location.hostname === 'localhost' || 
+            window.location.hostname === '127.0.0.1' || 
+            window.location.protocol === 'file:') {
+            await this.loadHeader();
+            await this.loadFooter();
+        }
         this.setActiveNavLink();
     }
 
@@ -19,6 +25,14 @@ class ComponentLoader {
             const existingHeader = document.querySelector('.navbar');
             if (existingHeader) {
                 existingHeader.outerHTML = headerHtml;
+                
+                // Re-initialize mobile menu after header is replaced
+                if (window.mobileMenuInstance) {
+                    setTimeout(() => {
+                        window.mobileMenuInstance.setupElements();
+                        window.mobileMenuInstance.bindEvents();
+                    }, 50);
+                }
             }
         } catch (error) {
             console.warn('Could not load header component:', error);
@@ -64,14 +78,21 @@ class MobileMenu {
         this.hamburger = null;
         this.navMenu = null;
         this.navLinks = null;
+        this.isInitialized = false;
         this.init();
     }
 
     init() {
-        // Wait for components to load, then initialize mobile menu
+        // Initialize mobile menu immediately
+        this.setupElements();
+        this.bindEvents();
+        
+        // Also try again after a short delay in case elements weren't ready
         setTimeout(() => {
-            this.setupElements();
-            this.bindEvents();
+            if (!this.isInitialized) {
+                this.setupElements();
+                this.bindEvents();
+            }
         }, 100);
     }
 
@@ -79,32 +100,50 @@ class MobileMenu {
         this.hamburger = document.querySelector('.hamburger');
         this.navMenu = document.querySelector('.nav-menu');
         this.navLinks = document.querySelectorAll('.nav-link');
+        
+        console.log('Mobile menu elements found:', {
+            hamburger: !!this.hamburger,
+            navMenu: !!this.navMenu,
+            navLinks: this.navLinks.length
+        });
     }
 
     bindEvents() {
+        // Remove existing event listeners to prevent duplicates
         if (this.hamburger) {
+            this.hamburger.removeEventListener('click', this.toggleMenu);
             this.hamburger.addEventListener('click', () => this.toggleMenu());
         }
 
         if (this.navLinks) {
             this.navLinks.forEach(link => {
+                link.removeEventListener('click', this.closeMenu);
                 link.addEventListener('click', () => this.closeMenu());
             });
         }
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
+        // Remove existing document event listeners
+        document.removeEventListener('click', this.handleOutsideClick);
+        document.removeEventListener('keydown', this.handleEscapeKey);
+        
+        // Add new event listeners
+        this.handleOutsideClick = (e) => {
             if (!this.hamburger?.contains(e.target) && !this.navMenu?.contains(e.target)) {
                 this.closeMenu();
             }
-        });
-
-        // Close menu on escape key
-        document.addEventListener('keydown', (e) => {
+        };
+        
+        this.handleEscapeKey = (e) => {
             if (e.key === 'Escape') {
                 this.closeMenu();
             }
-        });
+        };
+        
+        document.addEventListener('click', this.handleOutsideClick);
+        document.addEventListener('keydown', this.handleEscapeKey);
+        
+        this.isInitialized = true;
+        console.log('Mobile menu events bound successfully');
     }
 
     toggleMenu() {
@@ -133,5 +172,5 @@ class MobileMenu {
 // Initialize component loader when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     new ComponentLoader();
-    new MobileMenu();
+    window.mobileMenuInstance = new MobileMenu();
 });

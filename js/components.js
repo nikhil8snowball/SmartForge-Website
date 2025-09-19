@@ -58,7 +58,80 @@ class ComponentLoader {
     }
 }
 
+// Mobile Menu Functionality
+class MobileMenu {
+    constructor() {
+        this.hamburger = null;
+        this.navMenu = null;
+        this.navLinks = null;
+        this.init();
+    }
+
+    init() {
+        // Wait for components to load, then initialize mobile menu
+        setTimeout(() => {
+            this.setupElements();
+            this.bindEvents();
+        }, 100);
+    }
+
+    setupElements() {
+        this.hamburger = document.querySelector('.hamburger');
+        this.navMenu = document.querySelector('.nav-menu');
+        this.navLinks = document.querySelectorAll('.nav-link');
+    }
+
+    bindEvents() {
+        if (this.hamburger) {
+            this.hamburger.addEventListener('click', () => this.toggleMenu());
+        }
+
+        if (this.navLinks) {
+            this.navLinks.forEach(link => {
+                link.addEventListener('click', () => this.closeMenu());
+            });
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!this.hamburger?.contains(e.target) && !this.navMenu?.contains(e.target)) {
+                this.closeMenu();
+            }
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.closeMenu();
+            }
+        });
+    }
+
+    toggleMenu() {
+        if (!this.hamburger || !this.navMenu) return;
+
+        this.hamburger.classList.toggle('active');
+        this.navMenu.classList.toggle('active');
+        
+        // Prevent body scroll when menu is open
+        if (this.navMenu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    }
+
+    closeMenu() {
+        if (!this.hamburger || !this.navMenu) return;
+
+        this.hamburger.classList.remove('active');
+        this.navMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+}
+
 // Initialize component loader when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     new ComponentLoader();
+    new MobileMenu();
 });

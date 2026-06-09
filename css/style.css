@@ -2609,10 +2609,20 @@ body.modal-open .gallery-overlay {
 }
 
 .breakthrough-content {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     gap: 2rem;
-    align-items: center;
+    width: 100%;
+}
+
+.breakthrough-text {
+    width: 100%;
+    text-align: left;
+}
+
+.breakthrough .breakthrough-text p {
+    text-align: left !important;
 }
 
 /* Mobile-first breakthrough */
@@ -2622,7 +2632,6 @@ body.modal-open .gallery-overlay {
     }
     
     .breakthrough-content {
-        grid-template-columns: 1fr !important;
         gap: 2rem !important;
         padding: 0 1rem;
     }
@@ -2630,14 +2639,14 @@ body.modal-open .gallery-overlay {
     .breakthrough-text h3 {
         font-size: 1.6rem !important;
         margin-bottom: 1rem;
-        text-align: center;
+        text-align: left;
     }
     
     .breakthrough-text p {
         font-size: 1rem !important;
         margin-bottom: 1rem;
         line-height: 1.6;
-        text-align: center;
+        text-align: left;
     }
     
     .breakthrough-stats {
@@ -2661,19 +2670,11 @@ body.modal-open .gallery-overlay {
         font-size: 0.8rem !important;
     }
     
-    .mission-visual {
-        order: -1;
-    }
-    
-    .video-container {
-        min-height: 300px !important;
-    }
 }
 
 @media (min-width: 769px) {
     .breakthrough-content {
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+        gap: 3rem;
     }
 }
 
@@ -2683,10 +2684,11 @@ body.modal-open .gallery-overlay {
     font-size: 2rem;
 }
 
-.breakthrough-text p {
+.breakthrough .breakthrough-text p {
     margin-bottom: 1.5rem;
     color: var(--primary-white); /* Pure white text for clean appearance */
     font-size: 1.1rem;
+    text-align: left !important;
 }
 
 .breakthrough-stats {
@@ -2694,6 +2696,8 @@ body.modal-open .gallery-overlay {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-top: 2rem;
+    width: 100%;
+    justify-items: center;
 }
 
 .breakthrough-stat {
@@ -4434,7 +4438,7 @@ section:has(.team-grid) .section-title {
         margin-bottom: 1rem;
     }
     
-    .section p {
+    .section:not(.breakthrough) p {
         font-size: 1rem;
         text-align: center;
         margin-bottom: 1.5rem;
